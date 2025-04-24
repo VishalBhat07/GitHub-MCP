@@ -4,8 +4,10 @@ import { deleteRepo } from "../controllers/repoManipulation.js";
 export default {
   name: "delete-a-repo",
   schema: {
-    owner: z.string(),
-    repoName: z.string(),
+    owner: z
+      .string()
+      .describe("Name of the repo owner, default value is : VishalBhat07"),
+    repoName: z.string().describe("The name of the GitHub repository"),
   },
   handler: async ({ owner, repoName }) => {
     await deleteRepo(owner, repoName);
